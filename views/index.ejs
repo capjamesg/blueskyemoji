@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Bluesky Emoji Counter</title>
+
+        <link rel="icon" type="image/png" sizes="32x32" href="/bsky.webp">
+
+        <meta name="description" content="A count of the emojis posted on the Bluesky network.">
+
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+                line-height: 1.5;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                border: 1px solid #ddd;
+            }
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            a {
+                color: #0060df;
+                text-decoration: none;
+            }
+            html {
+                border-top: 5px solid #0060df;
+            }
+            main {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0;
+            }
+            p, tr, details  {
+                font-size: 1.2rem;
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .header img {
+                width: 100px;
+            }
+            footer {
+                margin-top: 50px;
+                text-align: center;
+            }
+            details {
+                margin-top: 20px;
+            }
+            summary {
+                cursor: pointer;
+            }
+            /* // on small screens, wrap image to top */
+            @media (max-width: 600px) {
+                .right {
+                    order: 2;
+                }
+                .left {
+                    order: 1;
+                }
+                .header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section class="header">
+                <div class="right">
+                    <h1>Bluesky Emoji Counter</h1>
+                    <p>A count of the emojis posted on the <a href="https://bsky.app">Bluesky network</a>.</p>
+                </div>
+                <div class="left">
+                    <img src="/bsky.webp" alt="Bluesky Logo">
+                </div>
+            </section>
+            <h2>Emojis by Use</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Emoji</th>
+                  <th>Usage Count</th>
+                </tr>
+              </thead>
+              <% for (let key in emojis) { %>
+                <tr>
+                  <td><%= key %></td>
+                  <td><%= emojis[key] %></td>
+                </tr>
+              <% } %>
+            </table>
+            <footer>
+                <p>Made with ❤️ and ☕ by <a href="https://jamesg.blog">capjamesg</a>.</p>
+            </footer>
+        </main>
+    </body>
+</html>
